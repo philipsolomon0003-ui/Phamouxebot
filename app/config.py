@@ -30,6 +30,6 @@ COOKIE_NAME = "phamouxe_session"
 SESSION_DURATION_HOURS = 24
 
 # App Server
-HOST = os.getenv("HOST", "127.0.0.1")
+HOST = os.getenv("HOST", "0.0.0.0" if (os.getenv("RENDER") or os.getenv("PORT")) else "127.0.0.1")
 PORT = int(os.getenv("PORT", 8080))
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
