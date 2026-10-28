@@ -66,18 +66,29 @@ logger = logging.getLogger("phamouxe.main")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Initialize DB & Seed
-    init_db()
-    seed_initial_research()
+    try:
+        init_db()
+        seed_initial_research()
+    except Exception as e:
+        logger.error(f"Error during DB initialization: {e}")
 
-    # Check for configured bot token on boot
-    token = get_bot_setting("bot_token") or os.getenv("DISCORD_BOT_TOKEN")
-    if token and token.strip():
-        await start_discord_bot(token.strip())
+    # Check for configured bot token on boot (skip persistent gateway on serverless platforms like Vercel)
+    if not os.getenv("VERCEL") and not os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+        token = get_bot_setting("bot_token") or os.getenv("DISCORD_BOT_TOKEN")
+        if token and token.strip():
+            try:
+                await start_discord_bot(token.strip())
+            except Exception as e:
+                logger.error(f"Error starting discord bot: {e}")
 
     yield
 
     # Graceful shutdown
-    await stop_discord_bot()
+    if not os.getenv("VERCEL") and not os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+        try:
+            await stop_discord_bot()
+        except Exception:
+            pass
 
 app = FastAPI(title="PHAMOUXE Intelligence Suite", lifespan=lifespan)
 

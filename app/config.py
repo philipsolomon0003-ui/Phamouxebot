@@ -10,8 +10,18 @@ env_path = BASE_DIR / ".env"
 if env_path.exists():
     load_dotenv(env_path)
 
-DATA_DIR = BASE_DIR / "data"
-DATA_DIR.mkdir(exist_ok=True)
+# Data Directory & Storage (Auto-detect Vercel serverless / read-only filesystem)
+if os.getenv("VERCEL") or os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+    DATA_DIR = Path("/tmp/data")
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+else:
+    DATA_DIR = BASE_DIR / "data"
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        DATA_DIR = Path("/tmp/data")
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 DB_PATH = DATA_DIR / "phamouxe.db"
 
 # Admin / Auth settings
