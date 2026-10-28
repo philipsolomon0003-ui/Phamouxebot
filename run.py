@@ -28,4 +28,4 @@ if __name__ == "__main__":
     # Automatically open the web browser for the operator
     threading.Thread(target=open_browser_delayed, daemon=True).start()
 
-    uvicorn.run("app.main:app", host=HOST, port=PORT, reload=False, log_level="info")
+    uvicorn.run("app.main:app", host=HOST, port=PORT, reload=False, log_level="info", proxy_headers=True, forwarded_allow_ips="*")

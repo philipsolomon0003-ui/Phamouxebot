@@ -852,6 +852,18 @@ async def api_bot_generate_invite(payload: InviteGenPayload, authenticated: bool
 # Discord Official OAuth2 User Linking (Phase 3 Core Flow)
 # -------------------------------------------------------------------------
 
+def get_effective_redirect_uri(request: Request) -> str:
+    # Check X-Forwarded-Proto header from reverse proxies (Render, Cloudflare, etc.)
+    proto = request.headers.get("x-forwarded-proto", "").lower()
+    host = request.headers.get("x-forwarded-host") or request.url.netloc
+    scheme = proto if proto in ("http", "https") else request.url.scheme
+
+    # Public domains must always use HTTPS for Discord OAuth2
+    if "127.0.0.1" not in host and "localhost" not in host:
+        scheme = "https"
+
+    return f"{scheme}://{host}/api/auth/discord/callback"
+
 @app.get("/api/auth/discord/login")
 async def api_discord_oauth_login(request: Request):
     config = get_oauth_config()
@@ -860,7 +872,7 @@ async def api_discord_oauth_login(request: Request):
         return RedirectResponse(url=f"/?discord_error={urllib.parse.quote(error_msg)}#discord", status_code=303)
 
     try:
-        host_redirect = f"{request.url.scheme}://{request.url.netloc}/api/auth/discord/callback"
+        host_redirect = get_effective_redirect_uri(request)
         auth_url, state = generate_authorization_url(redirect_uri=host_redirect)
         return RedirectResponse(url=auth_url, status_code=303)
     except Exception as e:
@@ -886,7 +898,7 @@ async def api_discord_oauth_callback(
 
     try:
         # 1. Exchange code for access token using request host
-        host_redirect = f"{request.url.scheme}://{request.url.netloc}/api/auth/discord/callback"
+        host_redirect = get_effective_redirect_uri(request)
         token_data = await exchange_code_for_token(code, redirect_uri=host_redirect)
         access_token = token_data["access_token"]
         refresh_token = token_data.get("refresh_token", "")
@@ -974,7 +986,7 @@ async def api_discord_oauth_status(request: Request):
         cid = config["client_id"]
         masked_client_id = cid[:4] + "..." + cid[-4:] if len(cid) > 8 else "***"
 
-    host_redirect = f"{request.url.scheme}://{request.url.netloc}/api/auth/discord/callback"
+    host_redirect = get_effective_redirect_uri(request)
 
     return JSONResponse({
         "is_connected": bool(account),
@@ -1045,7 +1057,7 @@ async def api_discord_oauth_get_config(request: Request):
     config = get_oauth_config()
     bot_token = (get_bot_setting("bot_token") or os.getenv("DISCORD_BOT_TOKEN") or "").strip()
     bot_token_masked = (bot_token[:6] + "••••••••" + bot_token[-4:]) if len(bot_token) > 10 else ("••••••••" if bot_token else "")
-    host_redirect = f"{request.url.scheme}://{request.url.netloc}/api/auth/discord/callback"
+    host_redirect = get_effective_redirect_uri(request)
 
     return JSONResponse({
         "client_id": config["client_id"],
@@ -1072,7 +1084,7 @@ async def api_discord_oauth_set_config(payload: OAuthConfigPayload, request: Req
     cid = payload.client_id.strip()
     csecret = (payload.client_secret or "").strip()
     btoken = (payload.bot_token or "").strip()
-    ruri = (payload.redirect_uri or f"{request.url.scheme}://{request.url.netloc}/api/auth/discord/callback").strip()
+    ruri = (payload.redirect_uri or get_effective_redirect_uri(request)).strip()
 
     if not cid:
         raise HTTPException(status_code=400, detail="Discord Application Client ID is required.")
