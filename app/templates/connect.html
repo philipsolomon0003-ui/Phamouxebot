@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHAMOUXE — Discord Account Authorization</title>
+  <link rel="stylesheet" href="/static/css/phamouxe.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .connect-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      background: radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 65%), var(--bg-deep);
+    }
+    .connect-card {
+      width: 100%;
+      max-width: 680px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), var(--gold-glow);
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .connect-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+    .crest-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      border: 1px solid var(--gold-primary);
+      box-shadow: var(--gold-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .crest-icon-box svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--gold-primary);
+    }
+    .policy-box {
+      background: var(--bg-deep);
+      border: 1px solid var(--border-medium);
+      border-left: 3px solid var(--gold-primary);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+    .feature-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+    }
+    .feature-item-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.25rem;
+    }
+    .feature-item-desc {
+      font-size: 0.76rem;
+      color: var(--cream-muted);
+      line-height: 1.4;
+    }
+    .connected-profile-card {
+      background: var(--bg-deep);
+      border: 1px solid var(--olive-primary);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="connect-wrapper">
+    <div class="connect-card">
+      
+      <!-- PHAMOUXE Luxury Header -->
+      <div style="text-align: center;">
+        <div class="crest-icon-box">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/>
+          </svg>
+        </div>
+        <h1 class="crest-text gold-shimmer" style="font-size: 1.75rem; letter-spacing: 0.15em; margin-bottom: 0.25rem;">
+          PHAMOUXE
+        </h1>
+        <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--olive-light); font-weight: 600;">
+          Executive IPTV Intelligence & Discord Gateway
+        </div>
+      </div>
+
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <h2 style="font-size: 1.2rem; color: var(--cream-primary); font-weight: 600;">
+          Discord Account Authorization
+        </h2>
+        <p style="font-size: 0.84rem; color: var(--cream-muted); margin-top: 0.35rem; line-height: 1.5;">
+          Connect your authorized Discord account to initialize the PHAMOUXE suite.
+        </p>
+      </div>
+
+      {% if is_connected and user %}
+      <!-- ============================================== -->
+      <!-- ALREADY CONNECTED STATE -->
+      <!-- ============================================== -->
+      <div style="margin-top: 1.75rem;">
+        <div class="connected-profile-card">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--bg-card); border: 2px solid var(--gold-primary); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; color: var(--gold-light); overflow: hidden;">
+              {% if user.avatar %}
+              <img src="https://cdn.discordapp.com/avatars/{{ user.id }}/{{ user.avatar }}.png?size=128" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+              {% else %}
+              {{ user.username[:2]|upper }}
+              {% endif %}
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <strong style="color: var(--cream-primary); font-size: 1rem;">{{ user.username }}</strong>
+                <span class="status-badge" style="background: var(--olive-deep); border-color: var(--olive-primary); color: var(--olive-light); padding: 0.1rem 0.5rem; font-size: 0.72rem;">
+                  ● Connected
+                </span>
+              </div>
+              <div style="font-size: 0.78rem; color: var(--cream-dim); font-family: monospace; margin-top: 0.15rem;">
+                ID: {{ user.id }} • {{ guilds_count }} Authorized Communities
+              </div>
+            </div>
+          </div>
+
+          <form action="/api/auth/discord/disconnect" method="POST" style="margin: 0;">
+            <button type="submit" class="btn btn-secondary btn-sm" style="border-color: var(--alert-crimson); color: #ff9999;">
+              Disconnect
+            </button>
+          </form>
+        </div>
+
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <a href="/" class="btn btn-gold" style="display: block; width: 100%; padding: 0.9rem; text-align: center; text-decoration: none; font-size: 0.95rem;">
+            Enter PHAMOUXE Intelligence Suite →
+          </a>
+        </div>
+      </div>
+
+      {% else %}
+      <!-- ============================================== -->
+      <!-- INITIAL DISCONNECTED STATE (PRIMARY STARTUP) -->
+      <!-- ============================================== -->
+
+      <!-- CRITICAL REQUIREMENT: Discord Security Policy / QR Code Notice -->
+      <div class="policy-box">
+        <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--gold-light); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.35rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+          <span>Official Discord Policy: QR-Code & Self-Bot Notice</span>
+        </div>
+        <p style="font-size: 0.8rem; color: var(--cream-soft); line-height: 1.55; margin: 0;">
+          Discord does not officially support QR-code login for automating personal accounts or operating self-bots. Discord’s mobile QR protocol (<code style="color: var(--gold-light);">/ra/remote-auth</code>) is strictly an internal mechanism reserved for Discord’s official desktop application. Third-party applications simulating QR codes violate Discord’s Developer Terms, risk permanent account termination, and expose users to token theft. PHAMOUXE exclusively implements Discord’s official, supported <strong>OAuth2 Web Authorization</strong> protocol.
+        </p>
+      </div>
+
+      <!-- Features Unlocked Upon Authorization -->
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="feature-item-title">
+            <span>✓ Community Intelligence</span>
+          </div>
+          <div class="feature-item-desc">
+            Public IPTV server discovery, live member counts, and invite verification.
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-title">
+            <span>✓ Mutual Server Access</span>
+          </div>
+          <div class="feature-item-desc">
+            Official <code style="color: var(--olive-light);">guilds</code> scope checks shared communities and admin roles.
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-title">
+            <span>✓ Customer CRM Pipeline</span>
+          </div>
+          <div class="feature-item-desc">
+            Organize leads, stage personalized messages, and track 2–3 day follow-ups.
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item-title">
+            <span>✓ Official Bot Gateway</span>
+          </div>
+          <div class="feature-item-desc">
+            Native slash commands (<code style="color: var(--olive-light);">/phamouxe-search</code>) via official discord.py.
+          </div>
+        </div>
+      </div>
+
+      <!-- Primary Action Buttons -->
+      <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem;">
+        {% if oauth_configured %}
+        <a href="/api/auth/discord/login" class="btn btn-gold" style="width: 100%; padding: 0.9rem; text-align: center; text-decoration: none; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V18z"/>
+          </svg>
+          <span>Connect Discord via Official OAuth2</span>
+        </a>
+        {% else %}
+        <button onclick="openConfigModal()" class="btn btn-gold" style="width: 100%; padding: 0.9rem; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12H6v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1V18z"/>
+          </svg>
+          <span>Connect Discord (Set Credentials)</span>
+        </button>
+        {% endif %}
+
+        <!-- Instant Test Connection Mode for Non-Developers -->
+        <form action="/api/auth/discord/demo-connect" method="POST" style="margin: 0;">
+          <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 0.75rem; font-size: 0.85rem; border-color: var(--border-gold); color: var(--gold-light);">
+            ⚡ Instant Test Connect (Demo Operator)
+          </button>
+        </form>
+
+        <button onclick="openConfigModal()" class="btn btn-secondary" style="width: 100%; padding: 0.65rem; font-size: 0.8rem; color: var(--cream-muted);">
+          ⚙ Configure Developer Portal Credentials
+        </button>
+      </div>
+
+      {% endif %}
+
+      <!-- Secondary Offline Access Link -->
+      <div style="margin-top: 1.75rem; text-align: center; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+        <span style="font-size: 0.78rem; color: var(--cream-dim);">
+          Need offline access without Discord? 
+          <a href="/login" style="color: var(--gold-light); text-decoration: none; margin-left: 0.25rem;">Unlock with Master Password →</a>
+        </span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OAuth2 Credentials Configuration Modal -->
+  <div id="configModal" class="modal-overlay" style="display: none;">
+    <div class="modal-card" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 class="crest-text text-gold" style="font-size: 1.15rem; margin: 0;">Configure Discord OAuth2</h3>
+        <button onclick="closeConfigModal()" class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" style="text-align: left;">
+        <p style="font-size: 0.82rem; color: var(--cream-muted); margin-bottom: 1.25rem; line-height: 1.5;">
+          From your <a href="https://discord.com/developers/applications" target="_blank" rel="noopener noreferrer" style="color: var(--gold-light);">Discord Developer Portal</a> application:
+        </p>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Client ID</label>
+          <input type="text" id="cfgClientId" class="form-input" placeholder="e.g. 112233445566778899" value="{{ client_id }}">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label class="form-label">Client Secret</label>
+          <input type="password" id="cfgClientSecret" class="form-input" placeholder="Paste Discord OAuth2 Client Secret">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label class="form-label">Authorized Redirect URI (Add to Developer Portal)</label>
+          <input type="text" readonly class="form-input" style="background: var(--bg-deep); color: var(--gold-light); font-family: monospace;" value="{{ redirect_uri }}">
+        </div>
+
+        <div id="cfgSaveNotice" style="display: none; font-size: 0.82rem; margin-bottom: 1rem;"></div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button onclick="closeConfigModal()" class="btn btn-secondary btn-sm">Cancel</button>
+          <button onclick="saveOAuthConfig()" id="btnSaveConfig" class="btn btn-gold btn-sm">Save & Connect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openConfigModal() {
+      document.getElementById('configModal').style.display = 'flex';
+    }
+    function closeConfigModal() {
+      document.getElementById('configModal').style.display = 'none';
+    }
+    async function saveOAuthConfig() {
+      const clientId = document.getElementById('cfgClientId').value.trim();
+      const clientSecret = document.getElementById('cfgClientSecret').value.trim();
+      const notice = document.getElementById('cfgSaveNotice');
+      const btn = document.getElementById('btnSaveConfig');
+
+      if (!clientId || !clientSecret) {
+        notice.style.display = 'block';
+        notice.style.color = '#ff9999';
+        notice.innerText = 'Please provide both Client ID and Client Secret.';
+        return;
+      }
+      if (!/^\d{17,20}$/.test(clientId)) {
+        notice.style.display = 'block';
+        notice.style.color = '#ff9999';
+        notice.innerText = 'Client ID must be a 17-20 digit number from the Discord Developer Portal.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerText = 'Saving...';
+
+      try {
+        const resp = await fetch('/api/auth/discord/config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ client_id: clientId, client_secret: clientSecret })
+        });
+        const data = await resp.json();
+        if (resp.ok) {
+          notice.style.display = 'block';
+          notice.style.color = 'var(--olive-light)';
+          notice.innerText = 'Credentials saved! Redirecting to Discord authorization...';
+          setTimeout(() => {
+            window.location.href = '/api/auth/discord/login';
+          }, 800);
+        } else {
+          notice.style.display = 'block';
+          notice.style.color = '#ff9999';
+          notice.innerText = data.detail || 'Failed to save credentials.';
+          btn.disabled = false;
+          btn.innerText = 'Save & Connect';
+        }
+      } catch (err) {
+        notice.style.display = 'block';
+        notice.style.color = '#ff9999';
+        notice.innerText = 'Network error saving configuration.';
+        btn.disabled = false;
+        btn.innerText = 'Save & Connect';
+      }
+    }
+  </script>
+</body>
+</html>

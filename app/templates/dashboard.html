@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Famous Media Technologies — Executive Discord AI Business Assistant</title>
+  <link rel="stylesheet" href="/static/css/phamouxe.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="executive-app-layout">
+    
+    <!-- ======================================================== -->
+    <!-- SIDEBAR NAVIGATION -->
+    <!-- ======================================================== -->
+    <aside class="executive-sidebar" id="appSidebar">
+      
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="brand-crest">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">FAMOUS MEDIA</h1>
+          <div class="brand-subtitle">Discord AI Assistant</div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="sidebar-scroll-area">
+        <ul class="sidebar-nav-list">
+          <li class="sidebar-section-title">Core Intelligence</li>
+          
+          <li>
+            <button onclick="switchView('overview')" id="nav-overview" class="sidebar-nav-btn active">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                <span>Overview</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('discord')" id="nav-discord" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09-.01-.02-.04-.03-.07-.03-1.5.26-2.93.71-4.27 1.33-.01 0-.02.01-.03.02-2.72 4.07-3.47 8.03-3.1 11.95 0 .02.01.04.03.05 1.8 1.32 3.53 2.12 5.24 2.65.03.01.06 0 .07-.02.4-.55.76-1.13 1.07-1.74.02-.04 0-.08-.04-.09-.57-.22-1.11-.48-1.64-.78-.04-.02-.04-.08-.01-.11.11-.08.22-.17.33-.25.02-.02.05-.02.07-.01 3.44 1.57 7.15 1.57 10.55 0 .02-.01.05-.01.07.01.11.09.22.17.33.26.04.03.04.09-.01.11-.52.31-1.07.56-1.64.78-.04.01-.05.06-.04.09.32.61.68 1.19 1.07 1.74.03.01.06.02.09.01 1.72-.53 3.45-1.33 5.25-2.65.02-.01.03-.03.03-.05.44-4.53-.73-8.46-3.1-11.95-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.83 2.12-1.89 2.12z"/></svg>
+                <span>Discord Connections</span>
+              </div>
+              <span id="badgeDiscordStatus" class="status-badge" style="font-size: 0.68rem;">Checking</span>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('servers')" id="nav-servers" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v4H4V6zm0 8h16v4H4v-4zm2-6h2V7H6v1zm0 8h2v-1H6v1z"/></svg>
+                <span>Server Management</span>
+              </div>
+              <span id="badgeServersCount" class="status-badge" style="font-size: 0.68rem;">0</span>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('research')" id="nav-research" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <span>AI Research Center</span>
+              </div>
+            </button>
+          </li>
+
+          <li class="sidebar-section-title" style="margin-top: 0.75rem;">Conversations & CRM</li>
+
+          <li>
+            <button onclick="switchView('workspace')" id="nav-workspace" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>Conversation Workspace</span>
+              </div>
+              <span id="badgeLeadsCount" class="status-badge" style="font-size: 0.68rem;">0</span>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('messages')" id="nav-messages" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
+                <span>AI Message Writer</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('followups')" id="nav-followups" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/></svg>
+                <span>Follow-Up Reminders</span>
+              </div>
+              <span id="badgeFollowUpDue" class="status-badge badge-due" style="display: none;">0</span>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('coach')" id="nav-coach" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
+                <span>Conversation Coach</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('chat')" id="nav-chat" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg>
+                <span>AI Command Center</span>
+              </div>
+            </button>
+          </li>
+
+          <li class="sidebar-section-title" style="margin-top: 0.75rem;">Settings & System</li>
+
+          <li>
+            <button onclick="switchView('business_settings')" id="nav-business_settings" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+                <span>Business & Pricing</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('ai_settings')" id="nav-ai_settings" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                <span>AI Provider Config</span>
+              </div>
+            </button>
+          </li>
+
+          <li>
+            <button onclick="switchView('privacy')" id="nav-privacy" class="sidebar-nav-btn">
+              <div class="sidebar-nav-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                <span>Privacy & Security</span>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Operator Status Footer -->
+      <div class="sidebar-footer">
+        <div class="operator-profile">
+          <div class="operator-avatar" id="sidebarAvatar">
+            {% if discord_account and discord_account.avatar_url %}
+              <img src="{{ discord_account.avatar_url }}" alt="Avatar">
+            {% else %}
+              FM
+            {% endif %}
+          </div>
+          <div>
+            <div class="operator-name" id="sidebarUsername">
+              {% if discord_account %}{{ discord_account.username }}{% else %}Famous Media{% endif %}
+            </div>
+            <div class="operator-role">Operator (Telegram: @Phamouxetv)</div>
+          </div>
+        </div>
+        <a href="/logout" title="Sign out" style="color: var(--text-dim); text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ======================================================== -->
+    <!-- MAIN WORKSPACE CONTENT -->
+    <!-- ======================================================== -->
+    <main class="executive-main">
+      
+      <!-- Top App Bar -->
+      <header class="top-appbar">
+        <div class="appbar-left">
+          <h2 class="appbar-title" id="viewHeaderTitle">Executive Dashboard</h2>
+        </div>
+        <div class="appbar-right">
+          <button onclick="switchView('messages')" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            <span>Draft Message</span>
+          </button>
+          <button onclick="switchView('chat')" class="btn btn-secondary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            <span>Command Center</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Dynamic View Container -->
+      <div class="workspace-body" id="workspaceContainer">
+
+        <!-- ==================================================== -->
+        <!-- VIEW 1: OVERVIEW DASHBOARD -->
+        <!-- ==================================================== -->
+        <section id="view-overview" class="view-panel">
+          
+          <!-- Key Metrics -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Saved Contacts</span>
+              <span class="stat-value" id="dashTotalLeads">0</span>
+              <span class="stat-sub">Tracked prospects</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Open Conversations</span>
+              <span class="stat-value" id="dashActiveConversations">0</span>
+              <span class="stat-sub">Active dialogs</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Interested Prospects</span>
+              <span class="stat-value" id="dashInterestedLeads">0</span>
+              <span class="stat-sub">Warm pipeline</span>
+            </div>
+            <div class="stat-card" style="border-color: rgba(245, 158, 11, 0.4);">
+              <span class="stat-label" style="color: var(--amber-primary);">Follow-Ups Due</span>
+              <span class="stat-value" style="color: var(--amber-primary);" id="dashFollowUpsDue">0</span>
+              <span class="stat-sub">Requires action</span>
+            </div>
+            <div class="stat-card" style="border-color: rgba(16, 185, 129, 0.4);">
+              <span class="stat-label" style="color: var(--emerald-light);">Converted Customers</span>
+              <span class="stat-value" style="color: var(--emerald-light);" id="dashConvertedCustomers">0</span>
+              <span class="stat-sub">Won clients</span>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Pipeline Summary -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+            
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Active Conversations Overview</h3>
+                  <div class="card-subtitle">Recent contacts across all 11 conversation stages</div>
+                </div>
+                <button onclick="switchView('workspace')" class="btn btn-outline-blue btn-sm">View All in CRM</button>
+              </div>
+
+              <div class="table-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Contact / Business</th>
+                      <th>Stage</th>
+                      <th>Service</th>
+                      <th>Origin</th>
+                      <th>Follow-Up</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="overviewLeadsTableBody">
+                    <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Loading contacts...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Business Services & Pricing Quick Glance -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Famous Media Services</h3>
+                  <div class="card-subtitle">Official verified pricing</div>
+                </div>
+                <button onclick="switchView('business_settings')" class="btn btn-secondary btn-sm">Edit</button>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.82rem;">
+                <div style="padding: 0.65rem; background: var(--bg-deep); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="font-weight: 700; color: #fff;">IPTV Subscriptions</div>
+                  <div style="color: var(--blue-bright); margin-top: 0.2rem;">1m: $15 | 3m: $35 | 6m: $55 | 12m: $80</div>
+                </div>
+                <div style="padding: 0.65rem; background: var(--bg-deep); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="font-weight: 700; color: #fff;">Reseller Panel</div>
+                  <div style="color: var(--blue-bright); margin-top: 0.2rem;">120 Credits: $350 (Sub-resellers enabled)</div>
+                </div>
+                <div style="padding: 0.65rem; background: var(--bg-deep); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="font-weight: 700; color: #fff;">App Rebranding</div>
+                  <div style="color: var(--blue-bright); margin-top: 0.2rem;">$150 with panel (XCIPTV / Smarters)</div>
+                </div>
+                <div style="padding: 0.65rem; background: var(--bg-deep); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="font-weight: 700; color: #fff;">App Dev & Server Setup</div>
+                  <div style="color: var(--text-muted); margin-top: 0.2rem;">Custom quote upon technical specs</div>
+                </div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
+                  Direct Telegram: <strong>@Phamouxetv</strong>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 2: DISCORD CONNECTIONS -->
+        <!-- ==================================================== -->
+        <section id="view-discord" class="view-panel" style="display: none;">
+          <!-- Real-Time Alerts -->
+          <div id="discordErrorBanner" style="display: none; margin-bottom: 1.5rem; background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-md); padding: 1rem 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#ef4444" style="flex-shrink: 0; margin-top: 2px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #fca5a5; margin-bottom: 0.25rem;">Discord Configuration Notice</div>
+                <div id="discordErrorText" style="font-size: 0.85rem; color: #fecaca; line-height: 1.45;"></div>
+              </div>
+              <button onclick="dismissDiscordAlert('discordErrorBanner')" style="background: none; border: none; color: #fca5a5; cursor: pointer; padding: 2px; font-size: 1rem;">✕</button>
+            </div>
+          </div>
+
+          <div id="discordSuccessBanner" style="display: none; margin-bottom: 1.5rem; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 1rem 1.25rem;">
+            <div style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#10b981" style="flex-shrink: 0; margin-top: 2px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <div style="flex: 1;">
+                <div style="font-weight: 700; color: #6ee7b7; margin-bottom: 0.25rem;">Discord Connected Successfully</div>
+                <div id="discordSuccessText" style="font-size: 0.85rem; color: #a7f3d0; line-height: 1.45;">Your Discord operator account has been securely linked via official OAuth2.</div>
+              </div>
+              <button onclick="dismissDiscordAlert('discordSuccessBanner')" style="background: none; border: none; color: #6ee7b7; cursor: pointer; padding: 2px; font-size: 1rem;">✕</button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            
+            <!-- User Account OAuth2 Status -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Discord User Account</h3>
+                  <div class="card-subtitle">Official OAuth2 Account Linking</div>
+                </div>
+                <span id="discordUserStatusBadge" class="status-badge">Checking...</span>
+              </div>
+
+              <div id="discordUserCardContent" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Official Discord Bot Gateway Status -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Official Bot Gateway</h3>
+                  <div class="card-subtitle">Maintained discord.py Gateway Connection</div>
+                </div>
+                <span id="discordBotStatusBadge" class="status-badge">Checking...</span>
+              </div>
+
+              <div id="discordBotCardContent" style="display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Discord Developer Portal Integration & Credentials -->
+          <div class="card" id="discordAppConfigCard" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Discord Developer Portal Configuration</h3>
+                <div class="card-subtitle">Connect your official Discord Developer Application credentials (Client ID, Client Secret & Bot Token)</div>
+              </div>
+              <span id="discordConfigBadge" class="status-badge">Checking...</span>
+            </div>
+
+            <!-- Non-Technical Setup Guide -->
+            <div style="background: var(--bg-deep); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.5rem;">
+              <h4 style="font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--blue-bright)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                Step-by-Step Setup Guide (Takes 2 Minutes)
+              </h4>
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.45;">
+                <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="color: var(--blue-bright); font-weight: 700; margin-bottom: 0.35rem;">Step 1: Open Developer Portal</div>
+                  Visit <a href="https://discord.com/developers/applications" target="_blank" rel="noopener noreferrer" style="color: #60a5fa; text-decoration: underline;">discord.com/developers/applications</a>. Click on your application or click <strong>New Application</strong>.
+                </div>
+                <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="color: var(--blue-bright); font-weight: 700; margin-bottom: 0.35rem;">Step 2: Add Redirect URI</div>
+                  In the Developer Portal, go to <strong>OAuth2 → General</strong>. Under <em>Redirects</em>, click <strong>Add Redirect</strong> and paste your Registered Redirect URL shown below.
+                </div>
+                <div style="background: var(--bg-surface); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                  <div style="color: var(--blue-bright); font-weight: 700; margin-bottom: 0.35rem;">Step 3: Paste Credentials</div>
+                  Copy your <strong>Application ID</strong> (from General Information) and <strong>Client Secret</strong> (from OAuth2 > Reset Secret) into the fields below and click <strong>Save</strong>.
+                </div>
+              </div>
+            </div>
+
+            <!-- Redirect URI Copy Box -->
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label class="form-label" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>Registered OAuth2 Redirect URL (Must match Discord Developer Portal exactly)</span>
+                <span style="font-size: 0.72rem; color: var(--emerald-light);">Protocol: HTTP • Port: 8080</span>
+              </label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="displayRedirectUriInput" class="input" readonly value="http://127.0.0.1:8080/api/auth/discord/callback" style="font-family: monospace; color: var(--blue-bright); background: var(--bg-deep); cursor: text;">
+                <button type="button" onclick="copyRedirectUri()" id="copyRedirectBtn" class="btn btn-secondary" style="white-space: nowrap;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span id="copyRedirectBtnText">Copy URL</span>
+                </button>
+              </div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">
+                Also register <code>http://localhost:8080/api/auth/discord/callback</code> in Discord Developer Portal if you browse via localhost.
+              </div>
+            </div>
+
+            <!-- Credentials Form -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="cfgDiscordClientId">
+                  <span>Application ID / Client ID</span>
+                  <span style="color: #ef4444;">*</span>
+                </label>
+                <input type="text" id="cfgDiscordClientId" class="input" placeholder="e.g. 134123456789012345 (17-20 digit number)">
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Found in <em>General Information</em> > <em>Application ID</em></div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="cfgDiscordClientSecret">
+                  <span>Client Secret</span>
+                  <span style="color: #ef4444;">*</span>
+                </label>
+                <div style="display: flex; gap: 0.5rem;">
+                  <input type="password" id="cfgDiscordClientSecret" class="input" placeholder="Enter 32-character Client Secret" autocomplete="new-password">
+                  <button type="button" onclick="togglePasswordVisibility('cfgDiscordClientSecret')" class="btn btn-secondary btn-sm" title="Toggle visibility" style="padding: 0 0.6rem;">👁</button>
+                </div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Found in <em>OAuth2</em> > <em>General</em> > <em>Client Secret</em></div>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 1.25rem;">
+              <label class="form-label" for="cfgDiscordBotToken">
+                <span>Bot Token (Optional if bot already connected)</span>
+              </label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="password" id="cfgDiscordBotToken" class="input" placeholder="Enter Bot Token (from Bot > Reset Token)" autocomplete="new-password">
+                <button type="button" onclick="togglePasswordVisibility('cfgDiscordBotToken')" class="btn btn-secondary btn-sm" title="Toggle visibility" style="padding: 0 0.6rem;">👁</button>
+              </div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem;">Required for the Discord bot gateway to read authorized channels and index buying signals.</div>
+            </div>
+
+            <div id="discordConfigFeedback" style="display: none; padding: 0.75rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.82rem;"></div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px solid var(--border-subtle);">
+              <div style="font-size: 0.78rem; color: var(--text-muted);" id="discordConfigStatusText">
+                Checking credentials status...
+              </div>
+              <button type="button" onclick="saveDiscordAppConfig()" id="btnSaveDiscordConfig" class="btn btn-primary">
+                <span>Save Discord Credentials</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Permissions & Access Boundary Matrix -->
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Official Access Boundary Matrix</h3>
+                <div class="card-subtitle">Why specific permissions are needed and what the application is authorized to access</div>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Scope / Permission</th>
+                    <th>System Role</th>
+                    <th>Purpose & Technical Boundary</th>
+                    <th>Safety Guarantee</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>identify</code> (OAuth2)</td>
+                    <td>User Account</td>
+                    <td>Retrieves your public Discord avatar, username, and ID to confirm operator identity.</td>
+                    <td>Never accesses passwords or payment data.</td>
+                  </tr>
+                  <tr>
+                    <td><code>guilds</code> (OAuth2)</td>
+                    <td>User Account</td>
+                    <td>Checks mutual server memberships where you have administrator or management permissions.</td>
+                    <td>Read-only list of servers. Zero write permissions.</td>
+                  </tr>
+                  <tr>
+                    <td><code>View Channels</code> & <code>Read History</code></td>
+                    <td>Official Bot</td>
+                    <td>Allows the bot to read messages in public channels you explicitly designate in Server Management.</td>
+                    <td>Strictly limited to monitored channels. Does not read private DMs.</td>
+                  </tr>
+                  <tr>
+                    <td><code>applications.commands</code></td>
+                    <td>Official Bot</td>
+                    <td>Enables slash commands (<code>/famous-stats</code>, <code>/famous-pricing</code>, <code>/famous-search</code>).</td>
+                    <td>Native Discord slash command protocol.</td>
+                  </tr>
+                  <tr>
+                    <td><code>Send Messages</code></td>
+                    <td>Official Bot</td>
+                    <td>Allows bot to respond to slash commands or send approved embeds in authorized channels.</td>
+                    <td>Zero unsolicited automated spam. Operator approves all outbound drafts.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 3: SERVER MANAGEMENT -->
+        <!-- ==================================================== -->
+        <section id="view-servers" class="view-panel" style="display: none;">
+          
+          <!-- Server Navigation Sub-Tabs -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="tabBtnUserServers" onclick="switchServerTab('user')" class="btn btn-primary btn-sm" style="display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>My Discord Servers</span>
+                <span id="badgeUserServersCount" class="status-badge" style="padding: 0.1rem 0.45rem; font-size: 0.68rem;">0</span>
+              </button>
+              <button id="tabBtnBotServers" onclick="switchServerTab('bot')" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 0.4rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4 6h16v4H4V6zm0 8h16v4H4v-4zm2-6h2V7H6v1zm0 8h2v-1H6v1z"/></svg>
+                <span>Bot-Connected Servers</span>
+                <span id="badgeBotServersCount" class="status-badge" style="padding: 0.1rem 0.45rem; font-size: 0.68rem;">0</span>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem;">
+              <button onclick="refreshUserGuilds()" id="btnRefreshUserGuilds" class="btn btn-secondary btn-sm" title="Re-fetch servers from Discord API">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                <span id="btnRefreshUserGuildsText">Refresh Server List</span>
+              </button>
+              <button onclick="openInviteBotDialog()" class="btn btn-primary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                <span>Add Bot to Server</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- SUB-PANEL 1: MY DISCORD SERVERS (OAUTH2) -->
+          <!-- ============================================== -->
+          <div class="card" id="panelUserServers">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">My Discord Servers</h3>
+                <div class="card-subtitle">Real server memberships returned from your authorized Discord account via official OAuth2</div>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <input type="text" id="filterUserServersInput" oninput="filterUserGuildsTable()" class="input input-sm" placeholder="Filter servers..." style="width: 180px;">
+              </div>
+            </div>
+
+            <!-- Guidance Note -->
+            <div style="background: var(--bg-deep); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.45;">
+              <span style="color: var(--blue-bright); font-weight: 600;">How it works:</span> These are the servers you belong to on Discord. If you have <strong>Server Owner</strong>, <strong>Administrator</strong>, or <strong>Manage Server</strong> permissions, you can click <strong>Add Bot to Server</strong> to install the official bot into that community.
+            </div>
+
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Server Name</th>
+                    <th>Guild ID</th>
+                    <th>Your Role / Permissions</th>
+                    <th>Bot Connection Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="userServersTableBody">
+                  <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading your Discord servers...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ============================================== -->
+          <!-- SUB-PANEL 2: BOT-CONNECTED SERVERS (GATEWAY) -->
+          <!-- ============================================== -->
+          <div class="card" id="panelBotServers" style="display: none;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Bot-Connected Communities</h3>
+                <div class="card-subtitle">Servers where your official Discord bot is installed and connected to the gateway</div>
+              </div>
+              <button onclick="openInviteBotDialog()" class="btn btn-primary btn-sm">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                <span>Add Bot to Another Server</span>
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Server Name</th>
+                    <th>Guild ID</th>
+                    <th>Members</th>
+                    <th>Permissions Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="botServersTableBody">
+                  <tr><td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">Loading authorized bot servers...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Channel Monitoring Drawer / Panel (When a server is selected) -->
+          <div class="card" id="serverChannelsPanel" style="display: none; margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title" id="selectedServerTitle">Server Channels</h3>
+                <div class="card-subtitle">Choose specific public channels the bot is permitted to read</div>
+              </div>
+              <div style="display: flex; gap: 0.5rem;">
+                <button onclick="disconnectSelectedServer()" class="btn btn-danger btn-sm">
+                  <span>Disconnect Server</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Channel</th>
+                    <th>Type</th>
+                    <th>Topic</th>
+                    <th>Monitoring Permission</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="serverChannelsTableBody">
+                  <tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Select a server above to view channels.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Live Channel Discussion Viewer -->
+            <div id="channelDiscussionsViewer" style="display: none; margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                  <h4 id="channelViewerTitle" style="font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem;">Channel Discussions</h4>
+                  <div id="channelViewerSubtitle" style="font-size: 0.78rem; color: var(--text-muted);">Recent messages indexed from channel</div>
+                </div>
+                <button onclick="closeChannelDiscussionsViewer()" class="btn btn-secondary btn-sm">Close Viewer</button>
+              </div>
+
+              <!-- Messages List -->
+              <div id="channelMessagesList" style="display: flex; flex-direction: column; gap: 0.75rem; max-height: 480px; overflow-y: auto; padding-right: 0.5rem;">
+                <!-- Populated dynamically via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Bot Installation Verification Modal -->
+          <div id="botVerifyModal" style="display: none; position: fixed; inset: 0; background: rgba(7, 10, 18, 0.85); z-index: 1000; align-items: center; justify-content: center; padding: 1.5rem;">
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-blue); border-radius: var(--radius-lg); max-width: 480px; width: 100%; padding: 2rem; box-shadow: var(--blue-glow-lg);">
+              <div style="text-align: center; margin-bottom: 1.25rem;">
+                <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--blue-dim); border: 2px solid var(--blue-bright); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                </div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem;">Discord Bot Installation in Progress</h3>
+                <p id="botVerifyModalMessage" style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.45;">
+                  Please complete the authorization in Discord's popup window, select your server, and click <strong>Authorize</strong>.
+                </p>
+              </div>
+
+              <div id="botVerifyModalStatus" style="background: var(--bg-deep); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.85rem; font-size: 0.8rem; text-align: center; color: var(--blue-bright); margin-bottom: 1.25rem;">
+                Waiting for bot to join server...
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+                <button onclick="closeBotVerifyModal()" class="btn btn-secondary btn-sm">Done / Close</button>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 4: AI RESEARCH CENTER -->
+        <!-- ==================================================== -->
+        <section id="view-research" class="view-panel" style="display: none;">
+          
+          <!-- Search & Filter Controls -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Search Authorized Channel Discussions</h3>
+                <div class="card-subtitle">Search public discussions for customer questions, requirements, and buying signals</div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 0.75rem; align-items: end;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Search Query or Keyword</label>
+                <input type="text" id="researchSearchQuery" class="input" placeholder="e.g. trial, sports, reseller credits, rebrand, smarters, buffer...">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label">Service Filter</label>
+                <select id="researchServiceFilter" class="select">
+                  <option value="All">All Services</option>
+                  <option value="IPTV Subscriptions">IPTV Subscriptions</option>
+                  <option value="Reseller Panels">Reseller Panels</option>
+                  <option value="App Rebranding">App Rebranding</option>
+                  <option value="App Development">App Development</option>
+                  <option value="Server Setup">Server Setup</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" style="display: flex; align-items: center; gap: 0.4rem;">
+                  <input type="checkbox" id="researchBuyingSignalsOnly" checked>
+                  <span>Buying signals only</span>
+                </label>
+              </div>
+              <button onclick="executeMessageResearch()" class="btn btn-primary">
+                <span>Search Discussions</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Research Results -->
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Identified Needs & Buying Signals</h3>
+                <div class="card-subtitle" id="researchResultsCount">0 discussions analyzed</div>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>User / Discord Handle</th>
+                    <th>Channel / Server</th>
+                    <th>Discussion Content</th>
+                    <th>Detected Need / Buying Signal</th>
+                    <th>Relevance</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="researchResultsTableBody">
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">No messages indexed yet. Click "Read Discussions" on any monitored server channel.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Verified Community Discovery Scanner -->
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Live Discord Community Scanner</h3>
+                <div class="card-subtitle">Inspect public IPTV servers and reseller hubs via official Discord API</div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <input type="text" id="scanInviteInput" class="input" placeholder="Paste Discord invite link (e.g. discord.gg/streamers or invite code)">
+              <button onclick="scanDiscordInvite()" class="btn btn-primary" style="white-space: nowrap;">
+                <span>Scan Server</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 5: CONVERSATION WORKSPACE (11 STAGES CRM) -->
+        <!-- ==================================================== -->
+        <section id="view-workspace" class="view-panel" style="display: none;">
+          
+          <!-- Filters & Stage Pills Bar -->
+          <div class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+              
+              <div style="display: flex; gap: 0.5rem; align-items: center; flex: 1; min-width: 280px;">
+                <input type="text" id="crmSearchInput" class="input" placeholder="Search contacts by name, handle, notes, or server..." onkeyup="filterCrmTable()">
+              </div>
+
+              <div style="display: flex; gap: 0.75rem; align-items: center;">
+                <select id="crmStageFilter" class="select" onchange="filterCrmTable()" style="width: 180px;">
+                  <option value="All">All Stages (11)</option>
+                  <option value="New Contact">1. New Contact</option>
+                  <option value="Researching">2. Researching</option>
+                  <option value="First Message Ready">3. First Message Ready</option>
+                  <option value="Conversation Started">4. Conversation Started</option>
+                  <option value="Interested">5. Interested</option>
+                  <option value="Needs More Information">6. Needs More Information</option>
+                  <option value="Price Discussed">7. Price Discussed</option>
+                  <option value="Follow-up Due">8. Follow-up Due</option>
+                  <option value="Converted Customer">9. Converted Customer</option>
+                  <option value="Not Interested">10. Not Interested</option>
+                  <option value="Archived">11. Archived</option>
+                </select>
+
+                <select id="crmOriginFilter" class="select" onchange="filterCrmTable()" style="width: 160px;">
+                  <option value="All">All Data Origins</option>
+                  <option value="discord_received">Discord Received</option>
+                  <option value="manual_entered">Manual Entered</option>
+                </select>
+
+                <button onclick="openNewContactModal()" class="btn btn-primary" style="white-space: nowrap;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                  <span>New Contact</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Contacts Table -->
+          <div class="card" style="margin-top: 1.5rem;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Contacts & Conversation Pipeline</h3>
+                <div class="card-subtitle" id="crmContactsCount">0 contacts in workspace</div>
+              </div>
+            </div>
+
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Contact / Discord Handle</th>
+                    <th>Stage</th>
+                    <th>Service Focus</th>
+                    <th>Origin</th>
+                    <th>Stated Interests & Needs</th>
+                    <th>Next Suggested Action</th>
+                    <th>Follow-Up Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="crmContactsTableBody">
+                  <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Loading contacts...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 6: AI MESSAGE WRITER -->
+        <!-- ==================================================== -->
+        <section id="view-messages" class="view-panel" style="display: none;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            
+            <!-- Message Parameters & Scenarios -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Message Assistant Parameters</h3>
+                  <div class="card-subtitle">Personalized messaging for Famous Media Technologies</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Conversation Scenario</label>
+                <select id="msgScenarioSelect" class="select" onchange="handleScenarioChange()">
+                  <option value="first_message_friend_accept">1. First message after friend request accepted</option>
+                  <option value="opening_from_interest">2. Opening message based on public interests / discussion</option>
+                  <option value="reply_to_inquiry">3. Reply to someone who responded to me</option>
+                  <option value="service_explanation">4. Explain services ("What do you do?")</option>
+                  <option value="pricing_breakdown">5. Answering questions about pricing</option>
+                  <option value="objection_price">6. Objection handling: Price concern</option>
+                  <option value="objection_already_have">7. Objection handling: Already have an app / provider</option>
+                  <option value="follow_up_gentle">8. Follow up after interest but stopped responding</option>
+                  <option value="polite_sign_off">9. Ending conversation politely (Not interested)</option>
+                </select>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                  <label class="form-label">Recipient Name / Handle</label>
+                  <input type="text" id="msgRecipientName" class="input" placeholder="e.g. Alex or @AlexIPTV">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Server / Business Name</label>
+                  <input type="text" id="msgBusinessName" class="input" placeholder="e.g. Streamers Network">
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                  <label class="form-label">Service Focus</label>
+                  <select id="msgServiceSelect" class="select">
+                    <option value="IPTV Subscriptions">IPTV Subscriptions ($15-$80)</option>
+                    <option value="Reseller Panels">Reseller Panels (120 credits: $350)</option>
+                    <option value="App Rebranding">App Rebranding ($150 with panel)</option>
+                    <option value="App Development">Custom App Development (Quote)</option>
+                    <option value="Server Setup">Server Setup & Balancers (Quote)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tone</label>
+                  <select id="msgToneSelect" class="select">
+                    <option value="Direct">Direct & Professional</option>
+                    <option value="Casual">Casual & Conversational</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Specific Context or Discussion Notes</label>
+                <textarea id="msgCustomContext" class="textarea" style="min-height: 80px;" placeholder="Paste recipient's inquiry, question, or device preferences here..."></textarea>
+              </div>
+
+              <button onclick="generateMessageDraft()" class="btn btn-primary" style="width: 100%;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                <span>Generate Tailored Draft</span>
+              </button>
+            </div>
+
+            <!-- Draft Staging & Anti-Spam Verification -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Message Draft Preview & Review</h3>
+                  <div class="card-subtitle">Review and edit naturally before copying to Discord</div>
+                </div>
+                <span id="msgCharCountBadge" class="status-badge">0 chars</span>
+              </div>
+
+              <div class="form-group">
+                <textarea id="msgDraftOutput" class="textarea" style="min-height: 240px; font-family: monospace; font-size: 0.88rem; line-height: 1.6;"></textarea>
+              </div>
+
+              <!-- Anti-Spam & Tone Checks -->
+              <div id="antiSpamFeedbackBox" style="display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.75rem; color: var(--text-muted); padding: 0.75rem; background: var(--bg-deep); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-bottom: 1rem;">
+                <div>✓ <strong>Tone:</strong> Natural conversational inquiry</div>
+                <div>✓ <strong>Policy:</strong> Human operator approval required</div>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+                <button onclick="copyDraftToClipboard()" class="btn btn-primary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span>Copy to Clipboard</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ============================================== -->
+          <!-- PERSONAL DIRECT MESSAGES & MANUAL CHAT INTAKE -->
+          <!-- ============================================== -->
+          <div class="card" style="margin-top: 1.5rem;" id="personalDmIntakeCard">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Personal Direct Message Intake & AI Coach</h3>
+                <div class="card-subtitle">Analyze private DMs, extract customer objections/questions, and generate tailored replies</div>
+              </div>
+              <span class="status-badge badge-live">Official API Compliant</span>
+            </div>
+
+            <!-- Discord Privacy Boundary Notice -->
+            <div style="background: var(--bg-deep); border: 1px solid var(--border-subtle); border-left: 3px solid var(--blue-bright); border-radius: var(--radius-sm); padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">
+              <strong style="color: #fff;">Discord Privacy & Anti-Self-Bot Architecture:</strong>
+              Discord does not provide an official API for bots to read personal user account Direct Messages. Automating user tokens or scraping private accounts ("Self-Botting") violates Discord Terms of Service and triggers permanent account bans. To protect your account, simply paste your prospect's DM message or question below: our AI will analyze their needs, link them to your 11-stage CRM, and generate 3 personalized replies with Famous Media Technologies pricing.
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+              <div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Contact Name / Handle <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="dmContactName" class="input" placeholder="e.g. John or @john_iptv">
+                  </div>
+                  <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label">Target Service</label>
+                    <select id="dmServiceSelect" class="select">
+                      <option value="IPTV Subscriptions">IPTV Subscriptions ($15-$80)</option>
+                      <option value="Reseller Panels">Reseller Panels (120 credits: $350)</option>
+                      <option value="App Rebranding">App Rebranding ($150 with panel)</option>
+                      <option value="App Development">Custom App Development</option>
+                      <option value="Server Setup">Server Setup & Infrastructure</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Paste Direct Message / Chat Snippet <span style="color: #ef4444;">*</span></label>
+                  <textarea id="dmSnippetInput" class="textarea" style="min-height: 130px;" placeholder="Paste what the prospect said in your Discord DM here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Additional Prospect Notes (Optional)</label>
+                  <input type="text" id="dmNotesInput" class="input" placeholder="e.g. Uses Firestick 4K Max, wants trial before weekend sports">
+                </div>
+
+                <button onclick="submitPersonalDMIntake()" id="btnSubmitPersonalDM" class="btn btn-primary" style="width: 100%;">
+                  <span>Analyze DM & Generate 3 AI Replies</span>
+                </button>
+              </div>
+
+              <!-- Output Panel -->
+              <div id="dmAnalysisOutputBox" style="background: var(--bg-deep); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; display: flex; flex-direction: column; gap: 0.85rem;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: #fff; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.5rem;">
+                  Analysis & AI Response Options
+                </div>
+                <div id="dmAnalysisPlaceholder" style="text-align: center; color: var(--text-muted); font-size: 0.82rem; padding: 2.5rem 1rem;">
+                  Paste a direct message on the left and click "Analyze DM" to view customer requirements and ready-to-send reply drafts.
+                </div>
+                <div id="dmAnalysisContent" style="display: none; flex-direction: column; gap: 0.85rem;">
+                  <div style="font-size: 0.8rem; color: var(--text-secondary);" id="dmSummaryText"></div>
+                  <div id="dmQuestionsList" style="font-size: 0.78rem; color: var(--blue-bright);"></div>
+                  <div style="font-size: 0.8rem; font-weight: 600; color: #fff;">Suggested Replies (Click to Copy):</div>
+                  <div id="dmRepliesList" style="display: flex; flex-direction: column; gap: 0.6rem;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 7: SMART FOLLOW-UP SYSTEM -->
+        <!-- ==================================================== -->
+        <section id="view-followups" class="view-panel" style="display: none;">
+          
+          <!-- Tabs for Follow-Up Status -->
+          <div class="tabs-nav">
+            <button onclick="switchFollowUpTab('today')" id="tab-fu-today" class="tab-btn active">
+              <span>Today's Reminders</span>
+              <span id="fuCountToday" class="status-badge badge-due">0</span>
+            </button>
+            <button onclick="switchFollowUpTab('overdue')" id="tab-fu-overdue" class="tab-btn">
+              <span>Overdue</span>
+              <span id="fuCountOverdue" class="status-badge" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;">0</span>
+            </button>
+            <button onclick="switchFollowUpTab('upcoming')" id="tab-fu-upcoming" class="tab-btn">
+              <span>Upcoming</span>
+              <span id="fuCountUpcoming" class="status-badge">0</span>
+            </button>
+            <button onclick="switchFollowUpTab('completed')" id="tab-fu-completed" class="tab-btn">
+              <span>Completed / Replied</span>
+              <span id="fuCountCompleted" class="status-badge">0</span>
+            </button>
+          </div>
+
+          <!-- Follow-Up Safeguards Alert Banner -->
+          <div style="padding: 0.75rem 1rem; background: var(--bg-surface); border: 1px solid var(--border-blue); border-radius: var(--radius-md); font-size: 0.78rem; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+            <div>
+              <strong style="color: var(--blue-bright);">Automated Safeguards Active:</strong>
+              Follow-ups are reminders and drafts only (no unsolicited automated DMs). Contacts marked "Not Interested" or "Archived" are strictly excluded. Max 2 follow-ups per contact.
+            </div>
+            <button onclick="switchView('workspace')" class="btn btn-secondary btn-sm">Schedule for Contact</button>
+          </div>
+
+          <!-- Reminders Table -->
+          <div class="card">
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Contact</th>
+                    <th>Due Date</th>
+                    <th>Context Summary</th>
+                    <th>Suggested Follow-Up Message</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="followUpsTableBody">
+                  <tr><td colspan="6" style="text-align: center; color: var(--text-muted);">Loading follow-up reminders...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 8: AI CONVERSATION COACH -->
+        <!-- ==================================================== -->
+        <section id="view-coach" class="view-panel" style="display: none;">
+          <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 1.5rem;">
+            
+            <!-- Conversation Input & Selection -->
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Analyze Conversation Thread</h3>
+                  <div class="card-subtitle">Get strategic advice on what to say next</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Select Saved Contact (Optional)</label>
+                <select id="coachLeadSelect" class="select" onchange="handleCoachLeadSelect()">
+                  <option value="">-- Choose from Contacts or Paste Below --</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Recipient Name / Handle</label>
+                <input type="text" id="coachContactName" class="input" placeholder="e.g. David">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Service Discussion Focus</label>
+                <select id="coachServiceSelect" class="select">
+                  <option value="IPTV Subscriptions">IPTV Subscriptions ($15-$80)</option>
+                  <option value="Reseller Panels">Reseller Panels (120 credits: $350)</option>
+                  <option value="App Rebranding">App Rebranding ($150 with panel)</option>
+                  <option value="App Development">App Development (Custom Quote)</option>
+                  <option value="Server Setup">Server Setup & Load Balancers (Custom Quote)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Paste Recent Conversation Thread / Messages</label>
+                <textarea id="coachRawConversation" class="textarea" style="min-height: 180px;" placeholder="Paste what the other person said or the recent conversation here..."></textarea>
+              </div>
+
+              <button onclick="runConversationCoach()" class="btn btn-primary" style="width: 100%;">
+                <span>Analyze & Recommend What to Say Next</span>
+              </button>
+            </div>
+
+            <!-- Coach Structured Guidance Output -->
+            <div class="card" id="coachOutputCard">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">AI Coach Recommendations</h3>
+                  <div class="card-subtitle" id="coachContactSubtitle">Awaiting conversation input</div>
+                </div>
+              </div>
+
+              <div id="coachResultsContent" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div style="text-align: center; color: var(--text-muted); padding: 3rem 1rem;">
+                  Select a contact on the left or paste a discussion snippet, then click "Analyze" to see personalized strategy, answers, and warning signs.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 9: AI COMMAND CENTER -->
+        <!-- ==================================================== -->
+        <section id="view-chat" class="view-panel" style="display: none;">
+          <div class="card" style="margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <h3 class="card-title">AI Chat & Research Command Center</h3>
+                <div class="card-subtitle">Give natural language instructions grounded in your live contacts, research, and pricing</div>
+              </div>
+              <button onclick="clearChatHistory()" class="btn btn-secondary btn-sm">Clear History</button>
+            </div>
+            
+            <!-- Quick Command Suggestions -->
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.85rem;">
+              <button onclick="sendQuickCommand('Find my follow-ups due today')" class="btn btn-secondary btn-sm" style="font-size: 0.72rem;">"Find my follow-ups due today"</button>
+              <button onclick="sendQuickCommand('Summarize my most promising opportunities this week')" class="btn btn-secondary btn-sm" style="font-size: 0.72rem;">"Summarize my most promising opportunities"</button>
+              <button onclick="sendQuickCommand('Research communities that may be relevant to my business')" class="btn btn-secondary btn-sm" style="font-size: 0.72rem;">"Research relevant communities"</button>
+              <button onclick="sendQuickCommand('Prepare a professional response to a price objection')" class="btn btn-secondary btn-sm" style="font-size: 0.72rem;">"Prepare response to price objection"</button>
+              <button onclick="sendQuickCommand('Write an opening message for app rebranding')" class="btn btn-secondary btn-sm" style="font-size: 0.72rem;">"Write opening for app rebranding"</button>
+            </div>
+          </div>
+
+          <div class="chat-container">
+            <div class="chat-history" id="chatHistoryBox">
+              <div class="chat-bubble chat-bubble-assistant">
+                Hello! I am your personal AI business assistant for <strong>Famous Media Technologies</strong>. I can search authorized server discussions, draft personalized messages, audit follow-ups, and help you turn conversations into business opportunities.
+              </div>
+            </div>
+
+            <div class="chat-input-bar">
+              <input type="text" id="chatInputField" class="input" placeholder="Type an instruction: e.g. 'Find my follow-ups due today' or 'Help me respond to this client'..." onkeypress="handleChatKeyPress(event)">
+              <button onclick="submitChatInstruction()" class="btn btn-primary" id="btnSendChat">
+                <span>Send</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 10: BUSINESS PROFILE & PRICING SETTINGS -->
+        <!-- ==================================================== -->
+        <section id="view-business_settings" class="view-panel" style="display: none;">
+          <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Business Profile & Service Pricing</h3>
+                <div class="card-subtitle">Famous Media Technologies service catalog and pricing governance</div>
+              </div>
+            </div>
+
+            <form id="businessSettingsForm" onsubmit="saveBusinessProfile(event)">
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Business Name</label>
+                  <input type="text" id="cfgBusinessName" class="input" required value="Famous Media Technologies">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Telegram Contact</label>
+                  <input type="text" id="cfgTelegramContact" class="input" required value="@Phamouxetv">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Sender Sign-off Name</label>
+                <input type="text" id="cfgSenderName" class="input" required value="Famous Media Technologies">
+              </div>
+
+              <div style="margin: 1.25rem 0 0.5rem; font-size: 0.85rem; font-weight: 700; color: #fff;">
+                IPTV Subscription Pricing (USD)
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+                <div class="form-group">
+                  <label class="form-label">1 Month ($)</label>
+                  <input type="number" id="cfgSub1mo" class="input" value="15" step="1">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">3 Months ($)</label>
+                  <input type="number" id="cfgSub3mo" class="input" value="35" step="1">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">6 Months ($)</label>
+                  <input type="number" id="cfgSub6mo" class="input" value="55" step="1">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">12 Months ($)</label>
+                  <input type="number" id="cfgSub12mo" class="input" value="80" step="1">
+                </div>
+              </div>
+
+              <div style="margin: 1.25rem 0 0.5rem; font-size: 0.85rem; font-weight: 700; color: #fff;">
+                Wholesale Solutions & Services (USD)
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">Reseller Panel (120 credits)</label>
+                  <input type="number" id="cfgReseller120" class="input" value="350" step="5">
+                  <div class="form-hint">Sub-reseller account creation enabled</div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">App Rebranding (with panel)</label>
+                  <input type="number" id="cfgAppRebrand" class="input" value="150" step="5">
+                  <div class="form-hint">XCIPTV, Smarters Pro, hardcoded DNS</div>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label">App Development Quote Policy</label>
+                  <input type="text" id="cfgAppDevPricing" class="input" value="Contact for requirements and custom pricing">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Server Setup Quote Policy</label>
+                  <input type="text" id="cfgServerPricing" class="input" value="Contact for infrastructure requirements">
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-top: 0.5rem;">
+                <label class="form-label" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                  <input type="checkbox" id="cfgNeverQuoteUnlisted" checked>
+                  <span>Strict Pricing Rule: Never quote an unlisted price without operator confirmation or marking as custom quote.</span>
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Additional Business Capabilities & Notes</label>
+                <textarea id="cfgBusinessNotes" class="textarea" style="min-height: 80px;">Official services: IPTV Subscriptions, Reseller Panels, App Rebranding, Custom App Development, and Server Setup.</textarea>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary">
+                  <span>Save Business Settings</span>
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 11: AI PROVIDER CONFIG -->
+        <!-- ==================================================== -->
+        <section id="view-ai_settings" class="view-panel" style="display: none;">
+          <div class="card" style="max-width: 650px; margin: 0 auto;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">AI Provider Configuration</h3>
+                <div class="card-subtitle">Connect your preferred AI model API for intelligent message writing</div>
+              </div>
+            </div>
+
+            <form id="aiSettingsForm" onsubmit="saveAIProvider(event)">
+              <div class="form-group">
+                <label class="form-label">AI Engine Provider</label>
+                <select id="cfgAIProvider" class="select">
+                  <option value="gemini">Google Gemini API (Official)</option>
+                  <option value="builtin">Built-in Neural Template Engine (Zero external keys required)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">API Key</label>
+                <input type="password" id="cfgAIApiKey" class="input" placeholder="Paste your Gemini or OpenAI API key here">
+                <div class="form-hint" id="cfgAIKeyHint">Keys are securely stored in your private vault and never exposed in browser code.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Model Name</label>
+                <input type="text" id="cfgAIModelName" class="input" value="gemini-1.5-flash">
+                <div class="form-hint">Default: <code>gemini-1.5-flash</code> (fast, accurate, simple conversational style).</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Creativity Temperature (0.0 to 1.0)</label>
+                <input type="number" id="cfgAITemperature" class="input" min="0" max="1" step="0.05" value="0.3">
+                <div class="form-hint">Recommended: 0.3 for consistent, natural business communication.</div>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary">
+                  <span>Save AI Configuration</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ==================================================== -->
+        <!-- VIEW 12: PRIVACY & DATA SECURITY -->
+        <!-- ==================================================== -->
+        <section id="view-privacy" class="view-panel" style="display: none;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Data Storage & Erasure Controls</h3>
+                  <div class="card-subtitle">Manage stored contacts, research cache, and private logs</div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.82rem;">
+                <div style="padding: 1rem; background: var(--bg-deep); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                  <div style="font-weight: 700; color: #fff;">Clear Unsaved Research Cache</div>
+                  <div style="color: var(--text-muted); margin: 0.25rem 0 0.75rem;">Removes indexed public channel messages that have not been saved to your CRM contacts list.</div>
+                  <button onclick="clearResearchData()" class="btn btn-secondary btn-sm">Clear Research Cache</button>
+                </div>
+
+                <div style="padding: 1rem; background: var(--bg-deep); border-radius: var(--radius-md); border: 1px solid rgba(239, 68, 68, 0.3);">
+                  <div style="font-weight: 700; color: #fca5a5;">Delete All Stored Contacts & Follow-Ups</div>
+                  <div style="color: var(--text-muted); margin: 0.25rem 0 0.75rem;">Permanently deletes all saved contacts, reminders, and draft messages from the database.</div>
+                  <button onclick="confirmClearAllContacts()" class="btn btn-danger btn-sm">Delete All Contacts</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Database Export & Parity</h3>
+                  <div class="card-subtitle">PostgreSQL migration and complete backup</div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.82rem;">
+                <p style="color: var(--text-secondary);">
+                  Famous Media Technologies runs a SQLite development engine with 100% PostgreSQL production parity. You can export a standard SQL dump at any time for cloud migration.
+                </p>
+                <a href="/api/export/sql" class="btn btn-outline-blue" download>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                  <span>Download Complete SQL Dump</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Master Password Management Card -->
+            <div class="card" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Master Password & Security</h3>
+                  <div class="card-subtitle">Change the master password used to unlock your local assistant</div>
+                </div>
+              </div>
+              <form id="changePasswordForm" onsubmit="changeMasterPassword(event)" style="max-width: 520px;">
+                <div class="form-group">
+                  <label class="form-label">Current Master Password</label>
+                  <input type="password" id="currentMasterPwd" class="input" placeholder="Enter current password" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.5rem;">
+                  <div class="form-group">
+                    <label class="form-label">New Password</label>
+                    <input type="password" id="newMasterPwd" class="input" placeholder="Min 6 characters" required minlength="6">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Confirm New Password</label>
+                    <input type="password" id="confirmNewMasterPwd" class="input" placeholder="Repeat new password" required minlength="6">
+                  </div>
+                </div>
+                <div style="margin-top: 0.75rem;">
+                  <button type="submit" class="btn btn-primary btn-sm">
+                    <span>Update Master Password</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: CONTACT DETAILS & STAGE MANAGEMENT -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="contactModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="card-title" id="contactModalTitle">Contact Details</h3>
+        <button onclick="closeContactModal()" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.25rem;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="contactForm" onsubmit="handleSaveContact(event)">
+          <input type="hidden" id="contactModalLeadId">
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label">Contact Name</label>
+              <input type="text" id="contactModalName" class="input" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Discord Handle</label>
+              <input type="text" id="contactModalHandle" class="input" placeholder="e.g. username#0000 or username">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label">Server / Community</label>
+              <input type="text" id="contactModalServer" class="input" placeholder="Server name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Channel (if known)</label>
+              <input type="text" id="contactModalChannel" class="input" placeholder="e.g. #iptv-chat">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label">Conversation Stage (11 Stages)</label>
+              <select id="contactModalStage" class="select">
+                <option value="New Contact">1. New Contact</option>
+                <option value="Researching">2. Researching</option>
+                <option value="First Message Ready">3. First Message Ready</option>
+                <option value="Conversation Started">4. Conversation Started</option>
+                <option value="Interested">5. Interested</option>
+                <option value="Needs More Information">6. Needs More Information</option>
+                <option value="Price Discussed">7. Price Discussed</option>
+                <option value="Follow-up Due">8. Follow-up Due</option>
+                <option value="Converted Customer">9. Converted Customer</option>
+                <option value="Not Interested">10. Not Interested</option>
+                <option value="Archived">11. Archived</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service Focus</label>
+              <select id="contactModalService" class="select">
+                <option value="IPTV Subscriptions">IPTV Subscriptions ($15-$80)</option>
+                <option value="Reseller Panels">Reseller Panels (120 credits: $350)</option>
+                <option value="App Rebranding">App Rebranding ($150 with panel)</option>
+                <option value="App Development">Custom App Development</option>
+                <option value="Server Setup">Server Setup & Load Balancers</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Data Origin</label>
+            <div id="contactModalOriginText" style="font-size: 0.78rem; color: var(--text-muted); padding: 0.4rem 0.6rem; background: var(--bg-deep); border-radius: var(--radius-sm);">Manual Entry</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Stated Interests & Needs</label>
+            <input type="text" id="contactModalInterests" class="input" placeholder="e.g. Asking for 4K sports feed with zero buffering">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Next Suggested Action</label>
+            <input type="text" id="contactModalNextAction" class="input" placeholder="e.g. Send 24h trial link or schedule follow-up">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Private Notes</label>
+            <textarea id="contactModalNotes" class="textarea" style="min-height: 80px;" placeholder="Add private notes..."></textarea>
+          </div>
+
+          <div class="modal-footer" style="padding: 0.75rem 0 0; background: transparent;">
+            <button type="button" onclick="closeContactModal()" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Contact</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

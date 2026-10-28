@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unlock Assistant — Famous Media Technologies</title>
+  <link rel="stylesheet" href="/static/css/phamouxe.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-crest-wrap">
+        <svg viewBox="0 0 24 24">
+          <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+        </svg>
+      </div>
+      
+      <h1 class="auth-title">FAMOUS MEDIA</h1>
+      <div class="auth-subtitle">Discord AI Business Assistant</div>
+      <p class="auth-desc">Enter your master password to unlock your private workspace and CRM.</p>
+
+      {% if error %}
+      <div class="auth-error">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 0.35rem;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+        {{ error }}
+      </div>
+      {% endif %}
+
+      {% if message %}
+      <div class="auth-success">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline-block; vertical-align: middle; margin-right: 0.35rem;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        {{ message }}
+      </div>
+      {% endif %}
+
+      <form action="/login" method="POST">
+        <div class="form-group" style="text-align: left;">
+          <label class="form-label">Master Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="loginPwdField" name="password" class="input" placeholder="Enter your password" required autofocus>
+            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('loginPwdField', this)" title="Show / Hide Password">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1.25rem; padding: 0.75rem; font-size: 0.9rem;">
+          <span>Unlock Assistant</span>
+        </button>
+      </form>
+      
+      <div class="auth-footer">
+        <div>
+          Forgot password? <a href="/reset-password">Reset Password</a> or run <code>Reset-Password.bat</code>
+        </div>
+        <div>All customer data & settings remain safely stored during reset.</div>
+        <div>Telegram: <a href="https://t.me/Phamouxetv" target="_blank">@Phamouxetv</a></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function togglePasswordVisibility(fieldId, btn) {
+      const field = document.getElementById(fieldId);
+      if (field.type === 'password') {
+        field.type = 'text';
+        btn.style.color = 'var(--blue-bright)';
+      } else {
+        field.type = 'password';
+        btn.style.color = 'var(--text-muted)';
+      }
+    }
+  </script>
+</body>
+</html>
