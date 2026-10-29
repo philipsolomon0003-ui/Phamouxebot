@@ -30,11 +30,28 @@ async function initApp() {
 }
 
 // ==========================================================================
-// VIEW ROUTER
+// VIEW ROUTER & RESPONSIVE DRAWER
 // ==========================================================================
+
+function toggleMobileSidebar(forceState) {
+  const sidebar = document.getElementById('appSidebar') || document.querySelector('.executive-sidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  if (!sidebar) return;
+  const isOpen = typeof forceState === 'boolean' ? forceState : !sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.add('open');
+    if (backdrop) backdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  } else {
+    sidebar.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
 
 function switchView(viewName) {
   currentView = viewName;
+  toggleMobileSidebar(false);
 
   // Update Nav Buttons
   document.querySelectorAll('.sidebar-nav-btn').forEach(btn => {
