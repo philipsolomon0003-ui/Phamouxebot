@@ -436,12 +436,12 @@ function togglePasswordVisibility(inputId) {
   input.type = input.type === 'password' ? 'text' : 'password';
 }
 
-async function copyRedirectUri() {
-  const input = document.getElementById('displayRedirectUriInput');
+async function copySpecificUri(inputId, btnTextId) {
+  const input = document.getElementById(inputId);
   if (!input) return;
   try {
     await navigator.clipboard.writeText(input.value);
-    const btnText = document.getElementById('copyRedirectBtnText');
+    const btnText = document.getElementById(btnTextId);
     if (btnText) {
       const orig = btnText.textContent;
       btnText.textContent = 'Copied!';
@@ -450,12 +450,17 @@ async function copyRedirectUri() {
   } catch (err) {
     input.select();
     document.execCommand('copy');
-    const btnText = document.getElementById('copyRedirectBtnText');
+    const btnText = document.getElementById(btnTextId);
     if (btnText) {
+      const orig = btnText.textContent;
       btnText.textContent = 'Copied!';
-      setTimeout(() => { btnText.textContent = 'Copy URL'; }, 2000);
+      setTimeout(() => { btnText.textContent = orig; }, 2000);
     }
   }
+}
+
+async function copyRedirectUri() {
+  await copySpecificUri('displayRedirectUriInput', 'copyRedirectBtnText');
 }
 
 async function loadDiscordAppConfig() {
@@ -481,8 +486,16 @@ async function loadDiscordAppConfig() {
     if (botTokenInput && data.has_bot_token) {
       botTokenInput.placeholder = `Configured (${data.bot_token_masked})`;
     }
+    const renderRedirectInput = document.getElementById('displayRenderRedirectUriInput');
+    if (renderRedirectInput) {
+      if (window.location.hostname !== '127.0.0.1' && window.location.hostname !== 'localhost') {
+        renderRedirectInput.value = `${window.location.origin}/api/auth/discord/callback`;
+      } else {
+        renderRedirectInput.value = 'https://phamouxebot.onrender.com/api/auth/discord/callback';
+      }
+    }
     if (redirectInput) {
-      redirectInput.value = data.suggested_redirect_uri || data.redirect_uri || 'http://127.0.0.1:8080/api/auth/discord/callback';
+      redirectInput.value = 'http://127.0.0.1:8080/api/auth/discord/callback';
     }
 
     if (badge) {
@@ -538,6 +551,9 @@ async function saveDiscordAppConfig() {
     saveBtn.textContent = 'Saving & Verifying...';
   }
 
+  const isRenderOrPublic = window.location.hostname !== '127.0.0.1' && window.location.hostname !== 'localhost';
+  const effectiveUri = isRenderOrPublic ? `${window.location.origin}/api/auth/discord/callback` : (redirectUri || 'http://127.0.0.1:8080/api/auth/discord/callback');
+
   try {
     const res = await fetch('/api/auth/discord/config', {
       method: 'POST',
@@ -546,7 +562,7 @@ async function saveDiscordAppConfig() {
         client_id: clientId,
         client_secret: clientSecret,
         bot_token: botToken,
-        redirect_uri: redirectUri
+        redirect_uri: effectiveUri
       })
     });
     const data = await res.json();

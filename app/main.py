@@ -136,13 +136,14 @@ async def connect_get(request: Request):
     discord_account = get_discord_oauth()
     config = get_oauth_config()
     guilds = get_user_guilds() if discord_account else []
+    effective_redirect = get_effective_redirect_uri(request)
     return templates.TemplateResponse(request=request, name="connect.html", context={
         "is_connected": bool(discord_account),
         "user": discord_account,
         "guilds_count": len(guilds),
         "oauth_configured": config["is_configured"],
         "client_id": config["client_id"],
-        "redirect_uri": config["redirect_uri"]
+        "redirect_uri": effective_redirect or config["redirect_uri"]
     })
 
 @app.get("/setup", response_class=HTMLResponse)
@@ -855,12 +856,15 @@ async def api_bot_generate_invite(payload: InviteGenPayload, authenticated: bool
 def get_effective_redirect_uri(request: Request) -> str:
     # Check X-Forwarded-Proto header from reverse proxies (Render, Cloudflare, etc.)
     proto = request.headers.get("x-forwarded-proto", "").lower()
-    host = request.headers.get("x-forwarded-host") or request.url.netloc
+    host = request.headers.get("x-forwarded-host") or request.headers.get("host") or request.url.netloc
     scheme = proto if proto in ("http", "https") else request.url.scheme
 
     # Public domains must always use HTTPS for Discord OAuth2
     if "127.0.0.1" not in host and "localhost" not in host:
         scheme = "https"
+        # Strip default port if attached
+        if host.endswith(":443") or host.endswith(":80"):
+            host = host.split(":")[0]
 
     return f"{scheme}://{host}/api/auth/discord/callback"
 
